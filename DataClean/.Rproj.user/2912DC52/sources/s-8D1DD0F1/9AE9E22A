@@ -1,0 +1,26 @@
+{
+    "id": "9AE9E22A",
+    "path": "~/Desktop/finalprojShiny/MyOwn/server.R",
+    "project_path": "MyOwn/server.R",
+    "type": "r_source",
+    "hash": "853262236",
+    "contents": "",
+    "dirty": false,
+    "created": 1636723455550.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "26,135",
+        "scrollLine": "6"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1636741623,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1636741623086,
+    "read_only": false,
+    "read_only_alternatives": []
+}

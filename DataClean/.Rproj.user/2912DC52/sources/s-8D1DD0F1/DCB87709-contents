@@ -1,0 +1,71 @@
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
+
+library(shiny)
+library(plotly)
+data(iris)
+force(iris)
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+    
+    # Application title
+    titlePanel("IRIS Data"),
+
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+            checkboxGroupInput("field",
+                               "Fields you want on the page",
+                               choices = c("Sepal.Length", "Sepal.Width",
+                                           "Petal.Width", "Petal.Length"),
+                               selected = c("Sepal.Length", "Sepal.Width"),
+                               choiceNames = c("Sepal.Length", "Sepal.Width",
+                                               "Petal.Width", "Petal.Length"),
+                               choiceValues = c("Sepal.Length", "Sepal.Width",
+                                                "Petal.Width", "Petal.Length")),
+            textOutput("resp", inline=TRUE)
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotlyOutput("distPlot")
+
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    new_func <- reactive({
+      validate(
+        need(length(input$field) == 2,  "Select only two elements")
+      )
+    })
+
+    selected_val <- observeEvent(input$field, {
+      new_func()
+      output$resp <- renderText(paste("All ok! Columns are", input$field[1],
+                                      " and ", input$field[2]))
+      a <- iris[input$field[1]][,1]
+      b <- iris[input$field[2]][,1]
+      print(length(input$field))
+      output$distPlot <- renderPlotly({
+
+      plot_ly(iris,  x= a, y= b, z = iris$Species,
+              
+                type = "scatter3d", mode = "markers", color = iris$Species)
+      })
+
+  }
+    )
+
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
