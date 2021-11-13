@@ -1,5 +1,10 @@
 ---
 title: "Model selection and Data Processing Steps"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "Rahul Deo"
 date: "13/11/2021"
 output: html_document
@@ -9,7 +14,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Project Log
 
 Whole logic corresponding to the work is based on a few facts that we need to consider cases where there is no spurious data and filter the irrelevant columns from the dataset. There are a few issues associated with the dataset.
 
