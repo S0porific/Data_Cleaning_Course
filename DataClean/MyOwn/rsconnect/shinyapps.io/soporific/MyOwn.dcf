@@ -1,0 +1,13 @@
+name: MyOwn
+title: MyOwn
+username:
+account: soporific
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5112775
+bundleId: 5245180
+url: https://soporific.shinyapps.io/MyOwn/
+when: 1636742215.88777
+lastSyncTime: 1636742215.8878
+asMultiple: FALSE
+asStatic: FALSE
