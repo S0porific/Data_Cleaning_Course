@@ -1,0 +1,85 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+----
+title: "Vit C effect on Guinea Pig"
+author: "Rahul Deo"
+date: "15/11/2021"
+output: html_document
+---
+  
+### Overview
+  The purpose of the this data analysis is to alyse the ToothGrowth data set by
+comparing the guinea tooth growth by supplement and dose. In the first part, I shall present the 
+exploratory data analysis and project summaries. After that, I shall perform hypothesis testing for the Vitamin D. I am using Ascorbic acid as a place holder for Vitamin c and Orange Juice in place of OJ
+
+### Load the ToothGrowth data and perform exploratory data analyses
+```{r results='hide'}
+library(datasets)
+data(ToothGrowth)
+str(ToothGrowth)
+head(ToothGrowth)
+summary(ToothGrowth)
+```
+
+```{r}
+library(ggplot2)
+t = ToothGrowth
+levels(t$supp) <- c("Orange Juice", "Ascorbic Acid")
+ggplot(t, aes(x=factor(dose), y=len)) + 
+  facet_grid(.~supp) +
+  geom_boxplot(aes(fill = supp), show_guide = FALSE) +
+  labs(title="Guinea pig tooth length for each supplement", 
+       x="Dose (mg/day)",
+       y="Tooth Length")
+```
+
+### Basic summary of the data
+The box plots seem to show, increase in dosage leads to an increase in tooth growth.
+It also appears that Orange juice is more effective than ascorbic acid for tooth growth when the dosages are between 0.5 to 1. The difference seems to vanish once the dosage level goes beyon 2.
+
+### Use confidence intervals & hypothesis tests to compare tooth growth by supplement and dose
+#### Hypothesis #1
+Orange juice & ascorbic acid deliver the same tooth growth across the data set.
+```{r}
+hypoth1<-t.test(len ~ supp, data = t)
+hypoth1$conf.int
+hypoth1$p.value
+```
+This comparison across the dataset which validates the general claim about the hypothesis that both the agents are leading to a higher tooth growth. The CI includes 0 and the p-value is greater than the threshold of 0.05.  The null hypothesis cannot be rejected.
+
+#### Hypothesis #2
+For the dosage of 0.5 mg/day, the two supplements deliver the same tooth growth.
+```{r}
+hypoth2<-t.test(len ~ supp, data = subset(t, dose == 0.5))
+hypoth2$conf.int
+hypoth2$p.value
+```
+This comparison across the dataset which validates the specific claim about the hypothesis when the supplement dose is 0.5 that both the agents are leading to a higher tooth growth. The CI does not includes 0 and the p-value is less than the threshold of 0.05.  The null hypothesis can be rejected. Hence Orange Juice leads to higher tooth growth. 
+
+#### Hypothesis #3
+For the dosage of 1 mg/day, the two supplements deliver the same tooth growth
+```{r}
+hypoth3<-t.test(len ~ supp, data = subset(t, dose == 1))
+hypoth3$conf.int
+hypoth3$p.value
+```
+This comparison across the dataset which validates the specific claim about the hypothesis when the supplement dose is 1.0 that both the agents are leading to a higher tooth growth. The CI does not includes 0 and the p-value is less than the threshold of 0.05.  The null hypothesis can be rejected. Hence Orange Juice leads to higher tooth growth. 
+
+#### Hypothesis #4
+For the dosage of 2 mg/day, the two supplements deliver the same tooth growth
+```{r}
+hypoth4<-t.test(len ~ supp, data = subset(t, dose == 2))
+hypoth4$conf.int
+hypoth4$p.value
+```
+This comparison across the dataset which validates the specific claim about the hypothesis when the supplement dose is 2.0 that both the agents are leading to a higher tooth growth. The CI does include 0 and the p-value is greater than the threshold of 0.05.  The null hypothesis can not be rejected.  
+
+
+### Conclusions & assumptions
+Orange juice delivers more tooth growth than ascorbic acid for dosages 0.5 & 
+  1.0. Orange juice and ascorbic acid deliver the same amount of tooth growth for 
+dose amount 2.0 mg/day.  For the entire data set though test confirms first hypothesis but the granular details says otherwise. In that case, we cannot conclude orange juice is more effective that ascorbic acid. But, We can state that in some cases it is more effective. 
+

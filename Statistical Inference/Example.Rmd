@@ -1,0 +1,83 @@
+---
+title: Investigate the exponential distribution in R and compare it with the Central
+  Limit Theorem
+author: "Rahul Deo"
+date: "14/11/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Overview
+In this exercise, I shall try to compare the exponential distribution with central limit theorem keeping the parameter lambda =0.3. I choose this because its mean and variance are simple to interpret. 
+
+
+## Simulations
+Set the simulation variables lambda, exponentials, and seed.
+```{r}
+library('ggplot2')
+ECHO=TRUE
+set.seed(42)
+lambda = 0.3
+exponentials = 40
+```
+
+Run Simulations with variables
+```{r}
+cal_mean = NULL
+for (i in 1 : 1000) cal_mean = c(cal_mean, mean(rexp(exponentials, lambda)))
+```
+
+
+## Sample Mean versus Theoretical Mean comaprision 
+#### Sample Mean
+Calculating the mean from the collected sample means.
+```{r}
+mean(cal_mean)
+```
+
+#### Theoretical Mean
+Theoretical mean is inverse(lambda) or lambda^-1
+```{r}
+lambda^-1
+```
+
+#### Comparison
+Ideally, there should be a slight difference bettwen the theoretical and calculated values.
+```{r}
+abs(mean(cal_mean)-lambda^-1)
+```
+
+
+## Sample Variance versus Theoretical Variance
+#### Sample Variance
+Calculated Variance
+```{r}
+var(cal_mean)
+```
+
+#### Theoretical Variance
+Theoratical variance 
+(lambda * sqrt(n))^-2.
+```{r}
+(lambda * sqrt(exponentials))^-2
+```
+
+#### Comparison
+Difference between both the variances
+```{r}
+abs(var(cal_mean)-(lambda * sqrt(exponentials))^-2)
+```
+
+
+## Distribution
+A histogram plot overlayed with normal distribution so that It can represent the concept that any sequence will become normal if we sample a lot of of points. The normal distribution will have a mean of lambda^-1 and standard deviation of (lambda*sqrt(n))^-1, the theoretical normal distribution for the simulations.
+```{r}
+library(ggplot2)
+ggplot(data.frame(y=cal_mean), aes(x=y)) + 
+  geom_histogram(aes(y=..density..), binwidth=0.2, fill="#0072B2", 
+                 color="black") +
+  geom_function(fun=dnorm, args = c(mean=lambda^-1, sd=(lambda*sqrt(exponentials))^-1),
+  size=2) +
+  labs(title="Plot of Calculated Means and Overlay Normal Distribution", x="Drawn sample Mean")
+```
