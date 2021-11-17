@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>R Markdown</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>R Markdown</h2>
+
+<p>Whole logic corresponding to the work is based on a few facts that we need to consider cases where there is no spurious data and filter the irrelevant columns from the dataset. There are a few issues associated with the dataset.</p>
+
+<ul>
+<li>Issue with Dataset<br/>
+
+<ul>
+<li>Presence of &ldquo;NA&rdquo;</li>
+<li>Presence of Null columns</li>
+<li>Non numeric data are identifiers so needs to dropped from the train and test set </li>
+</ul></li>
+</ul>
+
+<p>For prediction, I have a lot of algo to choose as most of them are present in caret package. I went ahead with gbm because of decent performance than random forest regression. </p>
+
+<p>Testing was performed with 5 iteration and 5-cross validation. It was meant to ensure that the model should not be biased. </p>
+
+<p>Finally, the predict method of caret was used to evaluate on the test set. </p>
+
+<p>Some Information regarding the column selection and accuracy curve is presented below. </p>
+
+<h1>Some Stats</h1>
+
+<pre><code>## [1] &quot;Total number Columns 160&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;Total Number of columns after NA filter 93&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;Total Number of columns after Null filter 60&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;Total Number of columns for training 60&quot;
+</code></pre>
+
+<h3>Accuracy and Number of tree plot.</h3>
+
+<pre><code class="r"># Train Random forest for the prediction 
+ctrl &lt;- trainControl(method = &quot;repeatedcv&quot;, repeats = 5, number = 5)
+set.seed(825)
+gbm &lt;- train(x= train_x, y =train_y, method = &#39;gbm&#39;, trControl=ctrl)
+</code></pre>
+
+<pre><code>## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1313
+##      2        1.5224            -nan     0.1000    0.0877
+##      3        1.4633            -nan     0.1000    0.0642
+##      4        1.4197            -nan     0.1000    0.0546
+##      5        1.3838            -nan     0.1000    0.0443
+##      6        1.3553            -nan     0.1000    0.0427
+##      7        1.3269            -nan     0.1000    0.0440
+##      8        1.3003            -nan     0.1000    0.0320
+##      9        1.2797            -nan     0.1000    0.0323
+##     10        1.2595            -nan     0.1000    0.0365
+##     20        1.1031            -nan     0.1000    0.0161
+##     40        0.9341            -nan     0.1000    0.0088
+##     60        0.8266            -nan     0.1000    0.0066
+##     80        0.7495            -nan     0.1000    0.0059
+##    100        0.6877            -nan     0.1000    0.0038
+##    120        0.6367            -nan     0.1000    0.0035
+##    140        0.5917            -nan     0.1000    0.0024
+##    150        0.5724            -nan     0.1000    0.0022
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1866
+##      2        1.4888            -nan     0.1000    0.1292
+##      3        1.4047            -nan     0.1000    0.1046
+##      4        1.3380            -nan     0.1000    0.0823
+##      5        1.2852            -nan     0.1000    0.0710
+##      6        1.2406            -nan     0.1000    0.0714
+##      7        1.1963            -nan     0.1000    0.0608
+##      8        1.1587            -nan     0.1000    0.0593
+##      9        1.1230            -nan     0.1000    0.0461
+##     10        1.0941            -nan     0.1000    0.0424
+##     20        0.8920            -nan     0.1000    0.0182
+##     40        0.6797            -nan     0.1000    0.0089
+##     60        0.5622            -nan     0.1000    0.0067
+##     80        0.4728            -nan     0.1000    0.0055
+##    100        0.4064            -nan     0.1000    0.0031
+##    120        0.3549            -nan     0.1000    0.0022
+##    140        0.3138            -nan     0.1000    0.0020
+##    150        0.2953            -nan     0.1000    0.0020
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2333
+##      2        1.4595            -nan     0.1000    0.1614
+##      3        1.3566            -nan     0.1000    0.1196
+##      4        1.2799            -nan     0.1000    0.1148
+##      5        1.2096            -nan     0.1000    0.0833
+##      6        1.1553            -nan     0.1000    0.0799
+##      7        1.1056            -nan     0.1000    0.0702
+##      8        1.0623            -nan     0.1000    0.0622
+##      9        1.0218            -nan     0.1000    0.0527
+##     10        0.9881            -nan     0.1000    0.0584
+##     20        0.7645            -nan     0.1000    0.0278
+##     40        0.5380            -nan     0.1000    0.0106
+##     60        0.4110            -nan     0.1000    0.0089
+##     80        0.3295            -nan     0.1000    0.0043
+##    100        0.2686            -nan     0.1000    0.0030
+##    120        0.2226            -nan     0.1000    0.0016
+##    140        0.1909            -nan     0.1000    0.0013
+##    150        0.1774            -nan     0.1000    0.0013
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1263
+##      2        1.5246            -nan     0.1000    0.0858
+##      3        1.4673            -nan     0.1000    0.0679
+##      4        1.4224            -nan     0.1000    0.0529
+##      5        1.3869            -nan     0.1000    0.0479
+##      6        1.3556            -nan     0.1000    0.0396
+##      7        1.3297            -nan     0.1000    0.0399
+##      8        1.3046            -nan     0.1000    0.0332
+##      9        1.2830            -nan     0.1000    0.0277
+##     10        1.2628            -nan     0.1000    0.0329
+##     20        1.1064            -nan     0.1000    0.0166
+##     40        0.9356            -nan     0.1000    0.0088
+##     60        0.8286            -nan     0.1000    0.0058
+##     80        0.7522            -nan     0.1000    0.0050
+##    100        0.6863            -nan     0.1000    0.0031
+##    120        0.6359            -nan     0.1000    0.0027
+##    140        0.5929            -nan     0.1000    0.0029
+##    150        0.5730            -nan     0.1000    0.0022
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1877
+##      2        1.4884            -nan     0.1000    0.1268
+##      3        1.4060            -nan     0.1000    0.1074
+##      4        1.3374            -nan     0.1000    0.0833
+##      5        1.2848            -nan     0.1000    0.0713
+##      6        1.2392            -nan     0.1000    0.0720
+##      7        1.1941            -nan     0.1000    0.0598
+##      8        1.1568            -nan     0.1000    0.0565
+##      9        1.1210            -nan     0.1000    0.0437
+##     10        1.0938            -nan     0.1000    0.0451
+##     20        0.8964            -nan     0.1000    0.0235
+##     40        0.6890            -nan     0.1000    0.0126
+##     60        0.5630            -nan     0.1000    0.0079
+##     80        0.4758            -nan     0.1000    0.0054
+##    100        0.4067            -nan     0.1000    0.0045
+##    120        0.3554            -nan     0.1000    0.0035
+##    140        0.3133            -nan     0.1000    0.0028
+##    150        0.2935            -nan     0.1000    0.0017
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2274
+##      2        1.4631            -nan     0.1000    0.1636
+##      3        1.3600            -nan     0.1000    0.1258
+##      4        1.2804            -nan     0.1000    0.1056
+##      5        1.2141            -nan     0.1000    0.0878
+##      6        1.1592            -nan     0.1000    0.0683
+##      7        1.1152            -nan     0.1000    0.0694
+##      8        1.0719            -nan     0.1000    0.0681
+##      9        1.0296            -nan     0.1000    0.0520
+##     10        0.9973            -nan     0.1000    0.0532
+##     20        0.7655            -nan     0.1000    0.0266
+##     40        0.5377            -nan     0.1000    0.0125
+##     60        0.4167            -nan     0.1000    0.0095
+##     80        0.3270            -nan     0.1000    0.0032
+##    100        0.2695            -nan     0.1000    0.0027
+##    120        0.2258            -nan     0.1000    0.0024
+##    140        0.1918            -nan     0.1000    0.0020
+##    150        0.1794            -nan     0.1000    0.0017
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1288
+##      2        1.5240            -nan     0.1000    0.0867
+##      3        1.4659            -nan     0.1000    0.0691
+##      4        1.4214            -nan     0.1000    0.0531
+##      5        1.3869            -nan     0.1000    0.0433
+##      6        1.3583            -nan     0.1000    0.0470
+##      7        1.3287            -nan     0.1000    0.0400
+##      8        1.3033            -nan     0.1000    0.0337
+##      9        1.2819            -nan     0.1000    0.0332
+##     10        1.2610            -nan     0.1000    0.0333
+##     20        1.1043            -nan     0.1000    0.0190
+##     40        0.9335            -nan     0.1000    0.0107
+##     60        0.8260            -nan     0.1000    0.0046
+##     80        0.7471            -nan     0.1000    0.0044
+##    100        0.6842            -nan     0.1000    0.0032
+##    120        0.6355            -nan     0.1000    0.0034
+##    140        0.5939            -nan     0.1000    0.0033
+##    150        0.5735            -nan     0.1000    0.0019
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1912
+##      2        1.4884            -nan     0.1000    0.1295
+##      3        1.4056            -nan     0.1000    0.1034
+##      4        1.3388            -nan     0.1000    0.0867
+##      5        1.2830            -nan     0.1000    0.0753
+##      6        1.2360            -nan     0.1000    0.0621
+##      7        1.1968            -nan     0.1000    0.0627
+##      8        1.1576            -nan     0.1000    0.0526
+##      9        1.1244            -nan     0.1000    0.0509
+##     10        1.0931            -nan     0.1000    0.0392
+##     20        0.8929            -nan     0.1000    0.0194
+##     40        0.6818            -nan     0.1000    0.0112
+##     60        0.5543            -nan     0.1000    0.0079
+##     80        0.4660            -nan     0.1000    0.0069
+##    100        0.4005            -nan     0.1000    0.0035
+##    120        0.3504            -nan     0.1000    0.0044
+##    140        0.3087            -nan     0.1000    0.0021
+##    150        0.2902            -nan     0.1000    0.0028
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2373
+##      2        1.4568            -nan     0.1000    0.1650
+##      3        1.3543            -nan     0.1000    0.1223
+##      4        1.2772            -nan     0.1000    0.1006
+##      5        1.2142            -nan     0.1000    0.0886
+##      6        1.1589            -nan     0.1000    0.0810
+##      7        1.1050            -nan     0.1000    0.0627
+##      8        1.0647            -nan     0.1000    0.0704
+##      9        1.0217            -nan     0.1000    0.0602
+##     10        0.9846            -nan     0.1000    0.0522
+##     20        0.7533            -nan     0.1000    0.0233
+##     40        0.5327            -nan     0.1000    0.0132
+##     60        0.4058            -nan     0.1000    0.0074
+##     80        0.3217            -nan     0.1000    0.0042
+##    100        0.2653            -nan     0.1000    0.0051
+##    120        0.2246            -nan     0.1000    0.0025
+##    140        0.1904            -nan     0.1000    0.0017
+##    150        0.1760            -nan     0.1000    0.0019
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1268
+##      2        1.5236            -nan     0.1000    0.0864
+##      3        1.4666            -nan     0.1000    0.0666
+##      4        1.4233            -nan     0.1000    0.0561
+##      5        1.3876            -nan     0.1000    0.0519
+##      6        1.3543            -nan     0.1000    0.0428
+##      7        1.3271            -nan     0.1000    0.0357
+##      8        1.3043            -nan     0.1000    0.0343
+##      9        1.2828            -nan     0.1000    0.0340
+##     10        1.2613            -nan     0.1000    0.0301
+##     20        1.1083            -nan     0.1000    0.0163
+##     40        0.9418            -nan     0.1000    0.0097
+##     60        0.8317            -nan     0.1000    0.0072
+##     80        0.7534            -nan     0.1000    0.0061
+##    100        0.6885            -nan     0.1000    0.0049
+##    120        0.6369            -nan     0.1000    0.0038
+##    140        0.5937            -nan     0.1000    0.0022
+##    150        0.5738            -nan     0.1000    0.0025
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1870
+##      2        1.4878            -nan     0.1000    0.1256
+##      3        1.4057            -nan     0.1000    0.1026
+##      4        1.3404            -nan     0.1000    0.0823
+##      5        1.2875            -nan     0.1000    0.0729
+##      6        1.2414            -nan     0.1000    0.0687
+##      7        1.1995            -nan     0.1000    0.0563
+##      8        1.1643            -nan     0.1000    0.0605
+##      9        1.1271            -nan     0.1000    0.0446
+##     10        1.0994            -nan     0.1000    0.0383
+##     20        0.9002            -nan     0.1000    0.0230
+##     40        0.6883            -nan     0.1000    0.0119
+##     60        0.5597            -nan     0.1000    0.0073
+##     80        0.4709            -nan     0.1000    0.0056
+##    100        0.4051            -nan     0.1000    0.0040
+##    120        0.3536            -nan     0.1000    0.0027
+##    140        0.3130            -nan     0.1000    0.0036
+##    150        0.2962            -nan     0.1000    0.0028
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2332
+##      2        1.4619            -nan     0.1000    0.1562
+##      3        1.3625            -nan     0.1000    0.1251
+##      4        1.2833            -nan     0.1000    0.0955
+##      5        1.2226            -nan     0.1000    0.0972
+##      6        1.1610            -nan     0.1000    0.0749
+##      7        1.1139            -nan     0.1000    0.0674
+##      8        1.0712            -nan     0.1000    0.0655
+##      9        1.0318            -nan     0.1000    0.0611
+##     10        0.9936            -nan     0.1000    0.0483
+##     20        0.7617            -nan     0.1000    0.0223
+##     40        0.5343            -nan     0.1000    0.0169
+##     60        0.4136            -nan     0.1000    0.0081
+##     80        0.3315            -nan     0.1000    0.0040
+##    100        0.2732            -nan     0.1000    0.0039
+##    120        0.2286            -nan     0.1000    0.0032
+##    140        0.1957            -nan     0.1000    0.0023
+##    150        0.1819            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1294
+##      2        1.5238            -nan     0.1000    0.0902
+##      3        1.4656            -nan     0.1000    0.0679
+##      4        1.4210            -nan     0.1000    0.0518
+##      5        1.3864            -nan     0.1000    0.0442
+##      6        1.3565            -nan     0.1000    0.0453
+##      7        1.3281            -nan     0.1000    0.0402
+##      8        1.3026            -nan     0.1000    0.0315
+##      9        1.2828            -nan     0.1000    0.0316
+##     10        1.2619            -nan     0.1000    0.0357
+##     20        1.1066            -nan     0.1000    0.0171
+##     40        0.9374            -nan     0.1000    0.0097
+##     60        0.8276            -nan     0.1000    0.0069
+##     80        0.7507            -nan     0.1000    0.0043
+##    100        0.6850            -nan     0.1000    0.0038
+##    120        0.6325            -nan     0.1000    0.0029
+##    140        0.5893            -nan     0.1000    0.0026
+##    150        0.5706            -nan     0.1000    0.0028
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1922
+##      2        1.4879            -nan     0.1000    0.1279
+##      3        1.4066            -nan     0.1000    0.1065
+##      4        1.3389            -nan     0.1000    0.0792
+##      5        1.2882            -nan     0.1000    0.0728
+##      6        1.2417            -nan     0.1000    0.0644
+##      7        1.2013            -nan     0.1000    0.0657
+##      8        1.1610            -nan     0.1000    0.0611
+##      9        1.1229            -nan     0.1000    0.0432
+##     10        1.0953            -nan     0.1000    0.0422
+##     20        0.8945            -nan     0.1000    0.0204
+##     40        0.6793            -nan     0.1000    0.0125
+##     60        0.5510            -nan     0.1000    0.0071
+##     80        0.4626            -nan     0.1000    0.0059
+##    100        0.3981            -nan     0.1000    0.0036
+##    120        0.3485            -nan     0.1000    0.0026
+##    140        0.3067            -nan     0.1000    0.0024
+##    150        0.2896            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2353
+##      2        1.4601            -nan     0.1000    0.1638
+##      3        1.3569            -nan     0.1000    0.1203
+##      4        1.2804            -nan     0.1000    0.1078
+##      5        1.2131            -nan     0.1000    0.0908
+##      6        1.1576            -nan     0.1000    0.0751
+##      7        1.1101            -nan     0.1000    0.0804
+##      8        1.0604            -nan     0.1000    0.0591
+##      9        1.0232            -nan     0.1000    0.0641
+##     10        0.9838            -nan     0.1000    0.0462
+##     20        0.7550            -nan     0.1000    0.0203
+##     40        0.5287            -nan     0.1000    0.0112
+##     60        0.4073            -nan     0.1000    0.0064
+##     80        0.3269            -nan     0.1000    0.0051
+##    100        0.2685            -nan     0.1000    0.0030
+##    120        0.2269            -nan     0.1000    0.0021
+##    140        0.1940            -nan     0.1000    0.0025
+##    150        0.1795            -nan     0.1000    0.0008
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1280
+##      2        1.5218            -nan     0.1000    0.0881
+##      3        1.4640            -nan     0.1000    0.0681
+##      4        1.4192            -nan     0.1000    0.0552
+##      5        1.3834            -nan     0.1000    0.0419
+##      6        1.3556            -nan     0.1000    0.0472
+##      7        1.3263            -nan     0.1000    0.0440
+##      8        1.2993            -nan     0.1000    0.0373
+##      9        1.2753            -nan     0.1000    0.0328
+##     10        1.2551            -nan     0.1000    0.0305
+##     20        1.0995            -nan     0.1000    0.0160
+##     40        0.9317            -nan     0.1000    0.0106
+##     60        0.8246            -nan     0.1000    0.0048
+##     80        0.7464            -nan     0.1000    0.0049
+##    100        0.6823            -nan     0.1000    0.0038
+##    120        0.6311            -nan     0.1000    0.0028
+##    140        0.5888            -nan     0.1000    0.0036
+##    150        0.5689            -nan     0.1000    0.0018
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1894
+##      2        1.4889            -nan     0.1000    0.1334
+##      3        1.4042            -nan     0.1000    0.1045
+##      4        1.3361            -nan     0.1000    0.0830
+##      5        1.2833            -nan     0.1000    0.0710
+##      6        1.2376            -nan     0.1000    0.0750
+##      7        1.1917            -nan     0.1000    0.0560
+##      8        1.1564            -nan     0.1000    0.0562
+##      9        1.1209            -nan     0.1000    0.0513
+##     10        1.0898            -nan     0.1000    0.0398
+##     20        0.8935            -nan     0.1000    0.0244
+##     40        0.6845            -nan     0.1000    0.0097
+##     60        0.5592            -nan     0.1000    0.0078
+##     80        0.4667            -nan     0.1000    0.0047
+##    100        0.3989            -nan     0.1000    0.0040
+##    120        0.3454            -nan     0.1000    0.0027
+##    140        0.3065            -nan     0.1000    0.0019
+##    150        0.2897            -nan     0.1000    0.0017
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2325
+##      2        1.4623            -nan     0.1000    0.1599
+##      3        1.3588            -nan     0.1000    0.1262
+##      4        1.2799            -nan     0.1000    0.1038
+##      5        1.2148            -nan     0.1000    0.0957
+##      6        1.1547            -nan     0.1000    0.0737
+##      7        1.1083            -nan     0.1000    0.0815
+##      8        1.0576            -nan     0.1000    0.0579
+##      9        1.0203            -nan     0.1000    0.0612
+##     10        0.9836            -nan     0.1000    0.0543
+##     20        0.7505            -nan     0.1000    0.0240
+##     40        0.5259            -nan     0.1000    0.0124
+##     60        0.4005            -nan     0.1000    0.0083
+##     80        0.3230            -nan     0.1000    0.0045
+##    100        0.2655            -nan     0.1000    0.0035
+##    120        0.2227            -nan     0.1000    0.0018
+##    140        0.1906            -nan     0.1000    0.0013
+##    150        0.1773            -nan     0.1000    0.0013
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1259
+##      2        1.5242            -nan     0.1000    0.0869
+##      3        1.4664            -nan     0.1000    0.0692
+##      4        1.4217            -nan     0.1000    0.0541
+##      5        1.3866            -nan     0.1000    0.0454
+##      6        1.3570            -nan     0.1000    0.0433
+##      7        1.3291            -nan     0.1000    0.0387
+##      8        1.3044            -nan     0.1000    0.0369
+##      9        1.2815            -nan     0.1000    0.0352
+##     10        1.2596            -nan     0.1000    0.0312
+##     20        1.1044            -nan     0.1000    0.0199
+##     40        0.9341            -nan     0.1000    0.0104
+##     60        0.8276            -nan     0.1000    0.0072
+##     80        0.7492            -nan     0.1000    0.0057
+##    100        0.6873            -nan     0.1000    0.0043
+##    120        0.6349            -nan     0.1000    0.0039
+##    140        0.5902            -nan     0.1000    0.0031
+##    150        0.5714            -nan     0.1000    0.0021
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1885
+##      2        1.4892            -nan     0.1000    0.1305
+##      3        1.4045            -nan     0.1000    0.1093
+##      4        1.3360            -nan     0.1000    0.0831
+##      5        1.2833            -nan     0.1000    0.0716
+##      6        1.2388            -nan     0.1000    0.0720
+##      7        1.1943            -nan     0.1000    0.0559
+##      8        1.1586            -nan     0.1000    0.0579
+##      9        1.1229            -nan     0.1000    0.0462
+##     10        1.0940            -nan     0.1000    0.0443
+##     20        0.8953            -nan     0.1000    0.0200
+##     40        0.6834            -nan     0.1000    0.0093
+##     60        0.5569            -nan     0.1000    0.0091
+##     80        0.4675            -nan     0.1000    0.0047
+##    100        0.4070            -nan     0.1000    0.0048
+##    120        0.3530            -nan     0.1000    0.0034
+##    140        0.3097            -nan     0.1000    0.0014
+##    150        0.2919            -nan     0.1000    0.0016
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2371
+##      2        1.4587            -nan     0.1000    0.1588
+##      3        1.3588            -nan     0.1000    0.1247
+##      4        1.2811            -nan     0.1000    0.1060
+##      5        1.2143            -nan     0.1000    0.0957
+##      6        1.1541            -nan     0.1000    0.0781
+##      7        1.1051            -nan     0.1000    0.0713
+##      8        1.0605            -nan     0.1000    0.0710
+##      9        1.0166            -nan     0.1000    0.0522
+##     10        0.9833            -nan     0.1000    0.0482
+##     20        0.7512            -nan     0.1000    0.0241
+##     40        0.5294            -nan     0.1000    0.0108
+##     60        0.4064            -nan     0.1000    0.0059
+##     80        0.3268            -nan     0.1000    0.0031
+##    100        0.2670            -nan     0.1000    0.0030
+##    120        0.2227            -nan     0.1000    0.0018
+##    140        0.1935            -nan     0.1000    0.0014
+##    150        0.1788            -nan     0.1000    0.0019
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1251
+##      2        1.5249            -nan     0.1000    0.0889
+##      3        1.4665            -nan     0.1000    0.0649
+##      4        1.4236            -nan     0.1000    0.0538
+##      5        1.3888            -nan     0.1000    0.0496
+##      6        1.3568            -nan     0.1000    0.0382
+##      7        1.3308            -nan     0.1000    0.0382
+##      8        1.3069            -nan     0.1000    0.0323
+##      9        1.2857            -nan     0.1000    0.0322
+##     10        1.2658            -nan     0.1000    0.0314
+##     20        1.1115            -nan     0.1000    0.0164
+##     40        0.9429            -nan     0.1000    0.0075
+##     60        0.8379            -nan     0.1000    0.0066
+##     80        0.7562            -nan     0.1000    0.0049
+##    100        0.6956            -nan     0.1000    0.0049
+##    120        0.6445            -nan     0.1000    0.0033
+##    140        0.5997            -nan     0.1000    0.0027
+##    150        0.5810            -nan     0.1000    0.0024
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1835
+##      2        1.4903            -nan     0.1000    0.1259
+##      3        1.4086            -nan     0.1000    0.1044
+##      4        1.3431            -nan     0.1000    0.0845
+##      5        1.2889            -nan     0.1000    0.0702
+##      6        1.2436            -nan     0.1000    0.0631
+##      7        1.2042            -nan     0.1000    0.0628
+##      8        1.1650            -nan     0.1000    0.0515
+##      9        1.1337            -nan     0.1000    0.0503
+##     10        1.1031            -nan     0.1000    0.0380
+##     20        0.9028            -nan     0.1000    0.0220
+##     40        0.6925            -nan     0.1000    0.0123
+##     60        0.5631            -nan     0.1000    0.0102
+##     80        0.4733            -nan     0.1000    0.0055
+##    100        0.4058            -nan     0.1000    0.0056
+##    120        0.3539            -nan     0.1000    0.0035
+##    140        0.3140            -nan     0.1000    0.0026
+##    150        0.2967            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2313
+##      2        1.4630            -nan     0.1000    0.1569
+##      3        1.3625            -nan     0.1000    0.1233
+##      4        1.2834            -nan     0.1000    0.1013
+##      5        1.2198            -nan     0.1000    0.0876
+##      6        1.1638            -nan     0.1000    0.0791
+##      7        1.1140            -nan     0.1000    0.0608
+##      8        1.0735            -nan     0.1000    0.0682
+##      9        1.0316            -nan     0.1000    0.0563
+##     10        0.9964            -nan     0.1000    0.0521
+##     20        0.7667            -nan     0.1000    0.0231
+##     40        0.5430            -nan     0.1000    0.0094
+##     60        0.4187            -nan     0.1000    0.0089
+##     80        0.3347            -nan     0.1000    0.0047
+##    100        0.2749            -nan     0.1000    0.0027
+##    120        0.2280            -nan     0.1000    0.0022
+##    140        0.1944            -nan     0.1000    0.0014
+##    150        0.1807            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1245
+##      2        1.5240            -nan     0.1000    0.0876
+##      3        1.4655            -nan     0.1000    0.0638
+##      4        1.4223            -nan     0.1000    0.0559
+##      5        1.3858            -nan     0.1000    0.0519
+##      6        1.3528            -nan     0.1000    0.0447
+##      7        1.3240            -nan     0.1000    0.0347
+##      8        1.3017            -nan     0.1000    0.0347
+##      9        1.2802            -nan     0.1000    0.0302
+##     10        1.2608            -nan     0.1000    0.0294
+##     20        1.1035            -nan     0.1000    0.0166
+##     40        0.9339            -nan     0.1000    0.0098
+##     60        0.8268            -nan     0.1000    0.0055
+##     80        0.7469            -nan     0.1000    0.0042
+##    100        0.6836            -nan     0.1000    0.0022
+##    120        0.6336            -nan     0.1000    0.0028
+##    140        0.5913            -nan     0.1000    0.0024
+##    150        0.5734            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1859
+##      2        1.4886            -nan     0.1000    0.1276
+##      3        1.4063            -nan     0.1000    0.1037
+##      4        1.3395            -nan     0.1000    0.0878
+##      5        1.2843            -nan     0.1000    0.0671
+##      6        1.2403            -nan     0.1000    0.0704
+##      7        1.1959            -nan     0.1000    0.0587
+##      8        1.1594            -nan     0.1000    0.0556
+##      9        1.1251            -nan     0.1000    0.0426
+##     10        1.0975            -nan     0.1000    0.0418
+##     20        0.8992            -nan     0.1000    0.0236
+##     40        0.6866            -nan     0.1000    0.0111
+##     60        0.5545            -nan     0.1000    0.0090
+##     80        0.4709            -nan     0.1000    0.0059
+##    100        0.4040            -nan     0.1000    0.0037
+##    120        0.3540            -nan     0.1000    0.0022
+##    140        0.3118            -nan     0.1000    0.0020
+##    150        0.2941            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2303
+##      2        1.4616            -nan     0.1000    0.1634
+##      3        1.3585            -nan     0.1000    0.1323
+##      4        1.2765            -nan     0.1000    0.1009
+##      5        1.2140            -nan     0.1000    0.0860
+##      6        1.1593            -nan     0.1000    0.0770
+##      7        1.1094            -nan     0.1000    0.0655
+##      8        1.0683            -nan     0.1000    0.0541
+##      9        1.0337            -nan     0.1000    0.0666
+##     10        0.9923            -nan     0.1000    0.0499
+##     20        0.7598            -nan     0.1000    0.0210
+##     40        0.5397            -nan     0.1000    0.0178
+##     60        0.4140            -nan     0.1000    0.0069
+##     80        0.3303            -nan     0.1000    0.0040
+##    100        0.2737            -nan     0.1000    0.0030
+##    120        0.2268            -nan     0.1000    0.0022
+##    140        0.1913            -nan     0.1000    0.0018
+##    150        0.1777            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1259
+##      2        1.5243            -nan     0.1000    0.0901
+##      3        1.4656            -nan     0.1000    0.0682
+##      4        1.4211            -nan     0.1000    0.0527
+##      5        1.3863            -nan     0.1000    0.0484
+##      6        1.3558            -nan     0.1000    0.0445
+##      7        1.3274            -nan     0.1000    0.0380
+##      8        1.3036            -nan     0.1000    0.0380
+##      9        1.2796            -nan     0.1000    0.0323
+##     10        1.2589            -nan     0.1000    0.0317
+##     20        1.1048            -nan     0.1000    0.0182
+##     40        0.9353            -nan     0.1000    0.0103
+##     60        0.8277            -nan     0.1000    0.0064
+##     80        0.7497            -nan     0.1000    0.0053
+##    100        0.6863            -nan     0.1000    0.0033
+##    120        0.6349            -nan     0.1000    0.0025
+##    140        0.5920            -nan     0.1000    0.0033
+##    150        0.5710            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1835
+##      2        1.4892            -nan     0.1000    0.1328
+##      3        1.4038            -nan     0.1000    0.1043
+##      4        1.3379            -nan     0.1000    0.0879
+##      5        1.2819            -nan     0.1000    0.0735
+##      6        1.2354            -nan     0.1000    0.0619
+##      7        1.1955            -nan     0.1000    0.0627
+##      8        1.1579            -nan     0.1000    0.0557
+##      9        1.1231            -nan     0.1000    0.0424
+##     10        1.0956            -nan     0.1000    0.0436
+##     20        0.8950            -nan     0.1000    0.0226
+##     40        0.6782            -nan     0.1000    0.0125
+##     60        0.5548            -nan     0.1000    0.0054
+##     80        0.4667            -nan     0.1000    0.0047
+##    100        0.4032            -nan     0.1000    0.0033
+##    120        0.3546            -nan     0.1000    0.0037
+##    140        0.3108            -nan     0.1000    0.0023
+##    150        0.2925            -nan     0.1000    0.0023
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2277
+##      2        1.4624            -nan     0.1000    0.1637
+##      3        1.3592            -nan     0.1000    0.1257
+##      4        1.2803            -nan     0.1000    0.1165
+##      5        1.2090            -nan     0.1000    0.0825
+##      6        1.1554            -nan     0.1000    0.0726
+##      7        1.1090            -nan     0.1000    0.0656
+##      8        1.0668            -nan     0.1000    0.0628
+##      9        1.0276            -nan     0.1000    0.0591
+##     10        0.9913            -nan     0.1000    0.0532
+##     20        0.7543            -nan     0.1000    0.0289
+##     40        0.5330            -nan     0.1000    0.0110
+##     60        0.4125            -nan     0.1000    0.0081
+##     80        0.3281            -nan     0.1000    0.0055
+##    100        0.2692            -nan     0.1000    0.0025
+##    120        0.2276            -nan     0.1000    0.0010
+##    140        0.1942            -nan     0.1000    0.0016
+##    150        0.1791            -nan     0.1000    0.0009
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1297
+##      2        1.5236            -nan     0.1000    0.0863
+##      3        1.4653            -nan     0.1000    0.0701
+##      4        1.4201            -nan     0.1000    0.0533
+##      5        1.3850            -nan     0.1000    0.0503
+##      6        1.3528            -nan     0.1000    0.0395
+##      7        1.3269            -nan     0.1000    0.0399
+##      8        1.3017            -nan     0.1000    0.0366
+##      9        1.2794            -nan     0.1000    0.0314
+##     10        1.2593            -nan     0.1000    0.0311
+##     20        1.1020            -nan     0.1000    0.0160
+##     40        0.9327            -nan     0.1000    0.0111
+##     60        0.8279            -nan     0.1000    0.0061
+##     80        0.7492            -nan     0.1000    0.0052
+##    100        0.6853            -nan     0.1000    0.0032
+##    120        0.6346            -nan     0.1000    0.0030
+##    140        0.5904            -nan     0.1000    0.0025
+##    150        0.5712            -nan     0.1000    0.0030
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1884
+##      2        1.4873            -nan     0.1000    0.1305
+##      3        1.4040            -nan     0.1000    0.1063
+##      4        1.3365            -nan     0.1000    0.0807
+##      5        1.2844            -nan     0.1000    0.0716
+##      6        1.2389            -nan     0.1000    0.0746
+##      7        1.1927            -nan     0.1000    0.0626
+##      8        1.1520            -nan     0.1000    0.0507
+##      9        1.1203            -nan     0.1000    0.0467
+##     10        1.0910            -nan     0.1000    0.0359
+##     20        0.8915            -nan     0.1000    0.0228
+##     40        0.6864            -nan     0.1000    0.0157
+##     60        0.5588            -nan     0.1000    0.0063
+##     80        0.4686            -nan     0.1000    0.0059
+##    100        0.4019            -nan     0.1000    0.0036
+##    120        0.3519            -nan     0.1000    0.0024
+##    140        0.3097            -nan     0.1000    0.0024
+##    150        0.2931            -nan     0.1000    0.0035
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2424
+##      2        1.4575            -nan     0.1000    0.1635
+##      3        1.3533            -nan     0.1000    0.1245
+##      4        1.2754            -nan     0.1000    0.1070
+##      5        1.2089            -nan     0.1000    0.0910
+##      6        1.1517            -nan     0.1000    0.0723
+##      7        1.1051            -nan     0.1000    0.0745
+##      8        1.0589            -nan     0.1000    0.0610
+##      9        1.0194            -nan     0.1000    0.0533
+##     10        0.9860            -nan     0.1000    0.0433
+##     20        0.7541            -nan     0.1000    0.0199
+##     40        0.5284            -nan     0.1000    0.0145
+##     60        0.4063            -nan     0.1000    0.0088
+##     80        0.3239            -nan     0.1000    0.0043
+##    100        0.2689            -nan     0.1000    0.0038
+##    120        0.2253            -nan     0.1000    0.0016
+##    140        0.1922            -nan     0.1000    0.0014
+##    150        0.1778            -nan     0.1000    0.0008
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1289
+##      2        1.5240            -nan     0.1000    0.0867
+##      3        1.4659            -nan     0.1000    0.0653
+##      4        1.4224            -nan     0.1000    0.0549
+##      5        1.3869            -nan     0.1000    0.0451
+##      6        1.3577            -nan     0.1000    0.0457
+##      7        1.3289            -nan     0.1000    0.0393
+##      8        1.3043            -nan     0.1000    0.0366
+##      9        1.2807            -nan     0.1000    0.0305
+##     10        1.2607            -nan     0.1000    0.0315
+##     20        1.1063            -nan     0.1000    0.0175
+##     40        0.9371            -nan     0.1000    0.0080
+##     60        0.8292            -nan     0.1000    0.0072
+##     80        0.7494            -nan     0.1000    0.0049
+##    100        0.6856            -nan     0.1000    0.0038
+##    120        0.6340            -nan     0.1000    0.0034
+##    140        0.5914            -nan     0.1000    0.0030
+##    150        0.5720            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1853
+##      2        1.4900            -nan     0.1000    0.1262
+##      3        1.4092            -nan     0.1000    0.1057
+##      4        1.3420            -nan     0.1000    0.0821
+##      5        1.2896            -nan     0.1000    0.0776
+##      6        1.2401            -nan     0.1000    0.0680
+##      7        1.1962            -nan     0.1000    0.0636
+##      8        1.1566            -nan     0.1000    0.0474
+##      9        1.1266            -nan     0.1000    0.0517
+##     10        1.0943            -nan     0.1000    0.0393
+##     20        0.8971            -nan     0.1000    0.0183
+##     40        0.6821            -nan     0.1000    0.0120
+##     60        0.5578            -nan     0.1000    0.0082
+##     80        0.4731            -nan     0.1000    0.0057
+##    100        0.4072            -nan     0.1000    0.0038
+##    120        0.3555            -nan     0.1000    0.0027
+##    140        0.3132            -nan     0.1000    0.0020
+##    150        0.2945            -nan     0.1000    0.0029
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2348
+##      2        1.4607            -nan     0.1000    0.1589
+##      3        1.3597            -nan     0.1000    0.1275
+##      4        1.2812            -nan     0.1000    0.1055
+##      5        1.2156            -nan     0.1000    0.0915
+##      6        1.1578            -nan     0.1000    0.0847
+##      7        1.1041            -nan     0.1000    0.0632
+##      8        1.0629            -nan     0.1000    0.0651
+##      9        1.0232            -nan     0.1000    0.0526
+##     10        0.9896            -nan     0.1000    0.0577
+##     20        0.7556            -nan     0.1000    0.0232
+##     40        0.5248            -nan     0.1000    0.0128
+##     60        0.4061            -nan     0.1000    0.0062
+##     80        0.3235            -nan     0.1000    0.0033
+##    100        0.2656            -nan     0.1000    0.0028
+##    120        0.2241            -nan     0.1000    0.0023
+##    140        0.1914            -nan     0.1000    0.0018
+##    150        0.1774            -nan     0.1000    0.0013
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1306
+##      2        1.5241            -nan     0.1000    0.0873
+##      3        1.4670            -nan     0.1000    0.0637
+##      4        1.4240            -nan     0.1000    0.0540
+##      5        1.3886            -nan     0.1000    0.0523
+##      6        1.3553            -nan     0.1000    0.0395
+##      7        1.3297            -nan     0.1000    0.0426
+##      8        1.3029            -nan     0.1000    0.0307
+##      9        1.2827            -nan     0.1000    0.0306
+##     10        1.2627            -nan     0.1000    0.0349
+##     20        1.1067            -nan     0.1000    0.0168
+##     40        0.9376            -nan     0.1000    0.0110
+##     60        0.8295            -nan     0.1000    0.0053
+##     80        0.7521            -nan     0.1000    0.0042
+##    100        0.6871            -nan     0.1000    0.0027
+##    120        0.6366            -nan     0.1000    0.0028
+##    140        0.5948            -nan     0.1000    0.0035
+##    150        0.5747            -nan     0.1000    0.0022
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1869
+##      2        1.4894            -nan     0.1000    0.1264
+##      3        1.4079            -nan     0.1000    0.1064
+##      4        1.3401            -nan     0.1000    0.0888
+##      5        1.2854            -nan     0.1000    0.0732
+##      6        1.2388            -nan     0.1000    0.0698
+##      7        1.1950            -nan     0.1000    0.0623
+##      8        1.1568            -nan     0.1000    0.0481
+##      9        1.1263            -nan     0.1000    0.0525
+##     10        1.0942            -nan     0.1000    0.0423
+##     20        0.8943            -nan     0.1000    0.0253
+##     40        0.6860            -nan     0.1000    0.0122
+##     60        0.5632            -nan     0.1000    0.0073
+##     80        0.4754            -nan     0.1000    0.0071
+##    100        0.4059            -nan     0.1000    0.0040
+##    120        0.3524            -nan     0.1000    0.0024
+##    140        0.3135            -nan     0.1000    0.0026
+##    150        0.2945            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2395
+##      2        1.4597            -nan     0.1000    0.1621
+##      3        1.3569            -nan     0.1000    0.1240
+##      4        1.2787            -nan     0.1000    0.0967
+##      5        1.2178            -nan     0.1000    0.0920
+##      6        1.1605            -nan     0.1000    0.0873
+##      7        1.1068            -nan     0.1000    0.0778
+##      8        1.0585            -nan     0.1000    0.0535
+##      9        1.0244            -nan     0.1000    0.0538
+##     10        0.9902            -nan     0.1000    0.0453
+##     20        0.7551            -nan     0.1000    0.0285
+##     40        0.5330            -nan     0.1000    0.0083
+##     60        0.4086            -nan     0.1000    0.0077
+##     80        0.3280            -nan     0.1000    0.0051
+##    100        0.2685            -nan     0.1000    0.0033
+##    120        0.2261            -nan     0.1000    0.0023
+##    140        0.1938            -nan     0.1000    0.0011
+##    150        0.1802            -nan     0.1000    0.0009
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1296
+##      2        1.5229            -nan     0.1000    0.0889
+##      3        1.4644            -nan     0.1000    0.0667
+##      4        1.4196            -nan     0.1000    0.0536
+##      5        1.3843            -nan     0.1000    0.0459
+##      6        1.3546            -nan     0.1000    0.0445
+##      7        1.3267            -nan     0.1000    0.0417
+##      8        1.3005            -nan     0.1000    0.0343
+##      9        1.2790            -nan     0.1000    0.0308
+##     10        1.2587            -nan     0.1000    0.0296
+##     20        1.1010            -nan     0.1000    0.0157
+##     40        0.9325            -nan     0.1000    0.0115
+##     60        0.8254            -nan     0.1000    0.0052
+##     80        0.7473            -nan     0.1000    0.0050
+##    100        0.6866            -nan     0.1000    0.0045
+##    120        0.6338            -nan     0.1000    0.0030
+##    140        0.5912            -nan     0.1000    0.0019
+##    150        0.5719            -nan     0.1000    0.0029
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1891
+##      2        1.4884            -nan     0.1000    0.1274
+##      3        1.4058            -nan     0.1000    0.1028
+##      4        1.3395            -nan     0.1000    0.0837
+##      5        1.2860            -nan     0.1000    0.0731
+##      6        1.2404            -nan     0.1000    0.0764
+##      7        1.1925            -nan     0.1000    0.0577
+##      8        1.1565            -nan     0.1000    0.0516
+##      9        1.1236            -nan     0.1000    0.0429
+##     10        1.0962            -nan     0.1000    0.0405
+##     20        0.8930            -nan     0.1000    0.0207
+##     40        0.6817            -nan     0.1000    0.0094
+##     60        0.5606            -nan     0.1000    0.0081
+##     80        0.4722            -nan     0.1000    0.0043
+##    100        0.4085            -nan     0.1000    0.0030
+##    120        0.3536            -nan     0.1000    0.0029
+##    140        0.3127            -nan     0.1000    0.0015
+##    150        0.2936            -nan     0.1000    0.0020
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2312
+##      2        1.4616            -nan     0.1000    0.1686
+##      3        1.3559            -nan     0.1000    0.1245
+##      4        1.2781            -nan     0.1000    0.1058
+##      5        1.2120            -nan     0.1000    0.0915
+##      6        1.1565            -nan     0.1000    0.0733
+##      7        1.1097            -nan     0.1000    0.0687
+##      8        1.0671            -nan     0.1000    0.0588
+##      9        1.0286            -nan     0.1000    0.0641
+##     10        0.9892            -nan     0.1000    0.0486
+##     20        0.7517            -nan     0.1000    0.0217
+##     40        0.5297            -nan     0.1000    0.0113
+##     60        0.4085            -nan     0.1000    0.0047
+##     80        0.3254            -nan     0.1000    0.0039
+##    100        0.2672            -nan     0.1000    0.0034
+##    120        0.2259            -nan     0.1000    0.0023
+##    140        0.1911            -nan     0.1000    0.0017
+##    150        0.1767            -nan     0.1000    0.0013
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1270
+##      2        1.5237            -nan     0.1000    0.0853
+##      3        1.4667            -nan     0.1000    0.0664
+##      4        1.4236            -nan     0.1000    0.0541
+##      5        1.3882            -nan     0.1000    0.0478
+##      6        1.3567            -nan     0.1000    0.0427
+##      7        1.3287            -nan     0.1000    0.0373
+##      8        1.3047            -nan     0.1000    0.0326
+##      9        1.2839            -nan     0.1000    0.0308
+##     10        1.2641            -nan     0.1000    0.0335
+##     20        1.1076            -nan     0.1000    0.0166
+##     40        0.9378            -nan     0.1000    0.0096
+##     60        0.8313            -nan     0.1000    0.0070
+##     80        0.7482            -nan     0.1000    0.0056
+##    100        0.6865            -nan     0.1000    0.0043
+##    120        0.6359            -nan     0.1000    0.0024
+##    140        0.5934            -nan     0.1000    0.0024
+##    150        0.5729            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1843
+##      2        1.4893            -nan     0.1000    0.1260
+##      3        1.4075            -nan     0.1000    0.1053
+##      4        1.3403            -nan     0.1000    0.0785
+##      5        1.2901            -nan     0.1000    0.0765
+##      6        1.2413            -nan     0.1000    0.0730
+##      7        1.1960            -nan     0.1000    0.0550
+##      8        1.1615            -nan     0.1000    0.0553
+##      9        1.1275            -nan     0.1000    0.0510
+##     10        1.0948            -nan     0.1000    0.0374
+##     20        0.9018            -nan     0.1000    0.0222
+##     40        0.6909            -nan     0.1000    0.0110
+##     60        0.5601            -nan     0.1000    0.0050
+##     80        0.4717            -nan     0.1000    0.0033
+##    100        0.4091            -nan     0.1000    0.0051
+##    120        0.3561            -nan     0.1000    0.0028
+##    140        0.3131            -nan     0.1000    0.0021
+##    150        0.2945            -nan     0.1000    0.0016
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2347
+##      2        1.4602            -nan     0.1000    0.1556
+##      3        1.3597            -nan     0.1000    0.1166
+##      4        1.2847            -nan     0.1000    0.1005
+##      5        1.2195            -nan     0.1000    0.0987
+##      6        1.1597            -nan     0.1000    0.0906
+##      7        1.1035            -nan     0.1000    0.0652
+##      8        1.0622            -nan     0.1000    0.0586
+##      9        1.0255            -nan     0.1000    0.0603
+##     10        0.9890            -nan     0.1000    0.0444
+##     20        0.7596            -nan     0.1000    0.0255
+##     40        0.5323            -nan     0.1000    0.0108
+##     60        0.4104            -nan     0.1000    0.0078
+##     80        0.3251            -nan     0.1000    0.0046
+##    100        0.2669            -nan     0.1000    0.0031
+##    120        0.2248            -nan     0.1000    0.0030
+##    140        0.1903            -nan     0.1000    0.0020
+##    150        0.1774            -nan     0.1000    0.0012
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1288
+##      2        1.5244            -nan     0.1000    0.0848
+##      3        1.4679            -nan     0.1000    0.0679
+##      4        1.4236            -nan     0.1000    0.0520
+##      5        1.3889            -nan     0.1000    0.0510
+##      6        1.3566            -nan     0.1000    0.0445
+##      7        1.3291            -nan     0.1000    0.0354
+##      8        1.3060            -nan     0.1000    0.0337
+##      9        1.2850            -nan     0.1000    0.0302
+##     10        1.2650            -nan     0.1000    0.0304
+##     20        1.1103            -nan     0.1000    0.0173
+##     40        0.9384            -nan     0.1000    0.0094
+##     60        0.8312            -nan     0.1000    0.0052
+##     80        0.7522            -nan     0.1000    0.0049
+##    100        0.6877            -nan     0.1000    0.0032
+##    120        0.6375            -nan     0.1000    0.0040
+##    140        0.5945            -nan     0.1000    0.0023
+##    150        0.5747            -nan     0.1000    0.0025
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1865
+##      2        1.4896            -nan     0.1000    0.1259
+##      3        1.4087            -nan     0.1000    0.1074
+##      4        1.3404            -nan     0.1000    0.0768
+##      5        1.2902            -nan     0.1000    0.0783
+##      6        1.2412            -nan     0.1000    0.0731
+##      7        1.1958            -nan     0.1000    0.0573
+##      8        1.1592            -nan     0.1000    0.0543
+##      9        1.1255            -nan     0.1000    0.0460
+##     10        1.0963            -nan     0.1000    0.0389
+##     20        0.8966            -nan     0.1000    0.0231
+##     40        0.6863            -nan     0.1000    0.0122
+##     60        0.5602            -nan     0.1000    0.0074
+##     80        0.4719            -nan     0.1000    0.0057
+##    100        0.4058            -nan     0.1000    0.0027
+##    120        0.3555            -nan     0.1000    0.0033
+##    140        0.3117            -nan     0.1000    0.0027
+##    150        0.2921            -nan     0.1000    0.0016
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2360
+##      2        1.4578            -nan     0.1000    0.1617
+##      3        1.3561            -nan     0.1000    0.1269
+##      4        1.2769            -nan     0.1000    0.1057
+##      5        1.2102            -nan     0.1000    0.0797
+##      6        1.1600            -nan     0.1000    0.0797
+##      7        1.1105            -nan     0.1000    0.0667
+##      8        1.0685            -nan     0.1000    0.0673
+##      9        1.0270            -nan     0.1000    0.0542
+##     10        0.9927            -nan     0.1000    0.0556
+##     20        0.7586            -nan     0.1000    0.0198
+##     40        0.5393            -nan     0.1000    0.0124
+##     60        0.4101            -nan     0.1000    0.0067
+##     80        0.3259            -nan     0.1000    0.0039
+##    100        0.2690            -nan     0.1000    0.0040
+##    120        0.2270            -nan     0.1000    0.0020
+##    140        0.1928            -nan     0.1000    0.0021
+##    150        0.1790            -nan     0.1000    0.0018
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1324
+##      2        1.5229            -nan     0.1000    0.0873
+##      3        1.4633            -nan     0.1000    0.0662
+##      4        1.4200            -nan     0.1000    0.0541
+##      5        1.3846            -nan     0.1000    0.0433
+##      6        1.3560            -nan     0.1000    0.0500
+##      7        1.3254            -nan     0.1000    0.0381
+##      8        1.3008            -nan     0.1000    0.0359
+##      9        1.2788            -nan     0.1000    0.0317
+##     10        1.2582            -nan     0.1000    0.0285
+##     20        1.1085            -nan     0.1000    0.0167
+##     40        0.9366            -nan     0.1000    0.0099
+##     60        0.8303            -nan     0.1000    0.0067
+##     80        0.7469            -nan     0.1000    0.0047
+##    100        0.6848            -nan     0.1000    0.0057
+##    120        0.6346            -nan     0.1000    0.0026
+##    140        0.5930            -nan     0.1000    0.0035
+##    150        0.5723            -nan     0.1000    0.0017
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1833
+##      2        1.4892            -nan     0.1000    0.1304
+##      3        1.4059            -nan     0.1000    0.1031
+##      4        1.3401            -nan     0.1000    0.0814
+##      5        1.2872            -nan     0.1000    0.0792
+##      6        1.2378            -nan     0.1000    0.0662
+##      7        1.1956            -nan     0.1000    0.0540
+##      8        1.1608            -nan     0.1000    0.0500
+##      9        1.1295            -nan     0.1000    0.0446
+##     10        1.1014            -nan     0.1000    0.0478
+##     20        0.8919            -nan     0.1000    0.0197
+##     40        0.6836            -nan     0.1000    0.0111
+##     60        0.5600            -nan     0.1000    0.0083
+##     80        0.4708            -nan     0.1000    0.0054
+##    100        0.4046            -nan     0.1000    0.0050
+##    120        0.3544            -nan     0.1000    0.0031
+##    140        0.3116            -nan     0.1000    0.0023
+##    150        0.2931            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2345
+##      2        1.4605            -nan     0.1000    0.1618
+##      3        1.3583            -nan     0.1000    0.1237
+##      4        1.2798            -nan     0.1000    0.1187
+##      5        1.2077            -nan     0.1000    0.0793
+##      6        1.1581            -nan     0.1000    0.0696
+##      7        1.1134            -nan     0.1000    0.0794
+##      8        1.0657            -nan     0.1000    0.0570
+##      9        1.0298            -nan     0.1000    0.0638
+##     10        0.9900            -nan     0.1000    0.0478
+##     20        0.7603            -nan     0.1000    0.0279
+##     40        0.5350            -nan     0.1000    0.0142
+##     60        0.4099            -nan     0.1000    0.0066
+##     80        0.3280            -nan     0.1000    0.0031
+##    100        0.2693            -nan     0.1000    0.0035
+##    120        0.2257            -nan     0.1000    0.0021
+##    140        0.1937            -nan     0.1000    0.0019
+##    150        0.1800            -nan     0.1000    0.0015
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1293
+##      2        1.5235            -nan     0.1000    0.0878
+##      3        1.4657            -nan     0.1000    0.0670
+##      4        1.4211            -nan     0.1000    0.0526
+##      5        1.3861            -nan     0.1000    0.0520
+##      6        1.3528            -nan     0.1000    0.0381
+##      7        1.3277            -nan     0.1000    0.0373
+##      8        1.3036            -nan     0.1000    0.0345
+##      9        1.2826            -nan     0.1000    0.0329
+##     10        1.2614            -nan     0.1000    0.0352
+##     20        1.1037            -nan     0.1000    0.0174
+##     40        0.9348            -nan     0.1000    0.0106
+##     60        0.8290            -nan     0.1000    0.0066
+##     80        0.7491            -nan     0.1000    0.0050
+##    100        0.6896            -nan     0.1000    0.0037
+##    120        0.6364            -nan     0.1000    0.0034
+##    140        0.5945            -nan     0.1000    0.0037
+##    150        0.5738            -nan     0.1000    0.0032
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1886
+##      2        1.4891            -nan     0.1000    0.1286
+##      3        1.4060            -nan     0.1000    0.1045
+##      4        1.3388            -nan     0.1000    0.0848
+##      5        1.2849            -nan     0.1000    0.0751
+##      6        1.2366            -nan     0.1000    0.0703
+##      7        1.1925            -nan     0.1000    0.0637
+##      8        1.1526            -nan     0.1000    0.0511
+##      9        1.1200            -nan     0.1000    0.0436
+##     10        1.0922            -nan     0.1000    0.0424
+##     20        0.8954            -nan     0.1000    0.0204
+##     40        0.6847            -nan     0.1000    0.0112
+##     60        0.5615            -nan     0.1000    0.0100
+##     80        0.4707            -nan     0.1000    0.0056
+##    100        0.4066            -nan     0.1000    0.0035
+##    120        0.3543            -nan     0.1000    0.0038
+##    140        0.3134            -nan     0.1000    0.0016
+##    150        0.2943            -nan     0.1000    0.0016
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2358
+##      2        1.4605            -nan     0.1000    0.1613
+##      3        1.3581            -nan     0.1000    0.1291
+##      4        1.2759            -nan     0.1000    0.1003
+##      5        1.2114            -nan     0.1000    0.0880
+##      6        1.1559            -nan     0.1000    0.0833
+##      7        1.1038            -nan     0.1000    0.0639
+##      8        1.0641            -nan     0.1000    0.0610
+##      9        1.0266            -nan     0.1000    0.0497
+##     10        0.9940            -nan     0.1000    0.0593
+##     20        0.7576            -nan     0.1000    0.0297
+##     40        0.5378            -nan     0.1000    0.0125
+##     60        0.4098            -nan     0.1000    0.0081
+##     80        0.3270            -nan     0.1000    0.0065
+##    100        0.2678            -nan     0.1000    0.0039
+##    120        0.2267            -nan     0.1000    0.0018
+##    140        0.1905            -nan     0.1000    0.0020
+##    150        0.1778            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1291
+##      2        1.5229            -nan     0.1000    0.0901
+##      3        1.4633            -nan     0.1000    0.0665
+##      4        1.4195            -nan     0.1000    0.0549
+##      5        1.3837            -nan     0.1000    0.0531
+##      6        1.3496            -nan     0.1000    0.0404
+##      7        1.3233            -nan     0.1000    0.0376
+##      8        1.2990            -nan     0.1000    0.0368
+##      9        1.2756            -nan     0.1000    0.0350
+##     10        1.2537            -nan     0.1000    0.0294
+##     20        1.0981            -nan     0.1000    0.0176
+##     40        0.9297            -nan     0.1000    0.0092
+##     60        0.8227            -nan     0.1000    0.0060
+##     80        0.7432            -nan     0.1000    0.0047
+##    100        0.6821            -nan     0.1000    0.0044
+##    120        0.6288            -nan     0.1000    0.0042
+##    140        0.5870            -nan     0.1000    0.0033
+##    150        0.5676            -nan     0.1000    0.0018
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1868
+##      2        1.4892            -nan     0.1000    0.1309
+##      3        1.4043            -nan     0.1000    0.1043
+##      4        1.3388            -nan     0.1000    0.0842
+##      5        1.2848            -nan     0.1000    0.0755
+##      6        1.2370            -nan     0.1000    0.0597
+##      7        1.1972            -nan     0.1000    0.0673
+##      8        1.1558            -nan     0.1000    0.0539
+##      9        1.1219            -nan     0.1000    0.0464
+##     10        1.0929            -nan     0.1000    0.0408
+##     20        0.8913            -nan     0.1000    0.0223
+##     40        0.6801            -nan     0.1000    0.0116
+##     60        0.5518            -nan     0.1000    0.0077
+##     80        0.4681            -nan     0.1000    0.0069
+##    100        0.4018            -nan     0.1000    0.0037
+##    120        0.3511            -nan     0.1000    0.0030
+##    140        0.3100            -nan     0.1000    0.0014
+##    150        0.2907            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2369
+##      2        1.4595            -nan     0.1000    0.1619
+##      3        1.3565            -nan     0.1000    0.1269
+##      4        1.2768            -nan     0.1000    0.1104
+##      5        1.2080            -nan     0.1000    0.0916
+##      6        1.1503            -nan     0.1000    0.0820
+##      7        1.0994            -nan     0.1000    0.0664
+##      8        1.0576            -nan     0.1000    0.0566
+##      9        1.0225            -nan     0.1000    0.0646
+##     10        0.9829            -nan     0.1000    0.0495
+##     20        0.7598            -nan     0.1000    0.0241
+##     40        0.5352            -nan     0.1000    0.0130
+##     60        0.4090            -nan     0.1000    0.0081
+##     80        0.3261            -nan     0.1000    0.0050
+##    100        0.2689            -nan     0.1000    0.0031
+##    120        0.2263            -nan     0.1000    0.0028
+##    140        0.1910            -nan     0.1000    0.0022
+##    150        0.1769            -nan     0.1000    0.0019
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1281
+##      2        1.5243            -nan     0.1000    0.0842
+##      3        1.4675            -nan     0.1000    0.0685
+##      4        1.4235            -nan     0.1000    0.0550
+##      5        1.3882            -nan     0.1000    0.0509
+##      6        1.3559            -nan     0.1000    0.0433
+##      7        1.3284            -nan     0.1000    0.0335
+##      8        1.3064            -nan     0.1000    0.0365
+##      9        1.2834            -nan     0.1000    0.0332
+##     10        1.2622            -nan     0.1000    0.0318
+##     20        1.1095            -nan     0.1000    0.0186
+##     40        0.9401            -nan     0.1000    0.0095
+##     60        0.8314            -nan     0.1000    0.0067
+##     80        0.7542            -nan     0.1000    0.0054
+##    100        0.6912            -nan     0.1000    0.0038
+##    120        0.6379            -nan     0.1000    0.0028
+##    140        0.5958            -nan     0.1000    0.0023
+##    150        0.5774            -nan     0.1000    0.0027
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1865
+##      2        1.4901            -nan     0.1000    0.1325
+##      3        1.4058            -nan     0.1000    0.1046
+##      4        1.3397            -nan     0.1000    0.0807
+##      5        1.2879            -nan     0.1000    0.0719
+##      6        1.2420            -nan     0.1000    0.0675
+##      7        1.1993            -nan     0.1000    0.0635
+##      8        1.1609            -nan     0.1000    0.0555
+##      9        1.1263            -nan     0.1000    0.0400
+##     10        1.1012            -nan     0.1000    0.0490
+##     20        0.8971            -nan     0.1000    0.0241
+##     40        0.6860            -nan     0.1000    0.0113
+##     60        0.5592            -nan     0.1000    0.0081
+##     80        0.4687            -nan     0.1000    0.0045
+##    100        0.4037            -nan     0.1000    0.0030
+##    120        0.3497            -nan     0.1000    0.0032
+##    140        0.3103            -nan     0.1000    0.0023
+##    150        0.2918            -nan     0.1000    0.0021
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2334
+##      2        1.4623            -nan     0.1000    0.1560
+##      3        1.3612            -nan     0.1000    0.1299
+##      4        1.2806            -nan     0.1000    0.0991
+##      5        1.2175            -nan     0.1000    0.0923
+##      6        1.1591            -nan     0.1000    0.0751
+##      7        1.1120            -nan     0.1000    0.0740
+##      8        1.0651            -nan     0.1000    0.0603
+##      9        1.0269            -nan     0.1000    0.0598
+##     10        0.9887            -nan     0.1000    0.0412
+##     20        0.7601            -nan     0.1000    0.0207
+##     40        0.5348            -nan     0.1000    0.0133
+##     60        0.4120            -nan     0.1000    0.0088
+##     80        0.3287            -nan     0.1000    0.0052
+##    100        0.2704            -nan     0.1000    0.0043
+##    120        0.2264            -nan     0.1000    0.0024
+##    140        0.1932            -nan     0.1000    0.0018
+##    150        0.1780            -nan     0.1000    0.0021
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1279
+##      2        1.5231            -nan     0.1000    0.0900
+##      3        1.4639            -nan     0.1000    0.0664
+##      4        1.4189            -nan     0.1000    0.0543
+##      5        1.3840            -nan     0.1000    0.0501
+##      6        1.3517            -nan     0.1000    0.0419
+##      7        1.3245            -nan     0.1000    0.0353
+##      8        1.3018            -nan     0.1000    0.0349
+##      9        1.2795            -nan     0.1000    0.0332
+##     10        1.2583            -nan     0.1000    0.0310
+##     20        1.1040            -nan     0.1000    0.0167
+##     40        0.9332            -nan     0.1000    0.0092
+##     60        0.8281            -nan     0.1000    0.0068
+##     80        0.7469            -nan     0.1000    0.0037
+##    100        0.6853            -nan     0.1000    0.0034
+##    120        0.6351            -nan     0.1000    0.0045
+##    140        0.5907            -nan     0.1000    0.0025
+##    150        0.5706            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1874
+##      2        1.4890            -nan     0.1000    0.1335
+##      3        1.4033            -nan     0.1000    0.1058
+##      4        1.3359            -nan     0.1000    0.0854
+##      5        1.2814            -nan     0.1000    0.0712
+##      6        1.2359            -nan     0.1000    0.0630
+##      7        1.1955            -nan     0.1000    0.0604
+##      8        1.1579            -nan     0.1000    0.0562
+##      9        1.1231            -nan     0.1000    0.0462
+##     10        1.0936            -nan     0.1000    0.0392
+##     20        0.8943            -nan     0.1000    0.0267
+##     40        0.6901            -nan     0.1000    0.0098
+##     60        0.5614            -nan     0.1000    0.0044
+##     80        0.4758            -nan     0.1000    0.0052
+##    100        0.4083            -nan     0.1000    0.0043
+##    120        0.3555            -nan     0.1000    0.0029
+##    140        0.3144            -nan     0.1000    0.0025
+##    150        0.2956            -nan     0.1000    0.0031
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2369
+##      2        1.4615            -nan     0.1000    0.1640
+##      3        1.3574            -nan     0.1000    0.1261
+##      4        1.2777            -nan     0.1000    0.1110
+##      5        1.2076            -nan     0.1000    0.0854
+##      6        1.1536            -nan     0.1000    0.0703
+##      7        1.1089            -nan     0.1000    0.0602
+##      8        1.0711            -nan     0.1000    0.0745
+##      9        1.0255            -nan     0.1000    0.0592
+##     10        0.9882            -nan     0.1000    0.0517
+##     20        0.7600            -nan     0.1000    0.0244
+##     40        0.5363            -nan     0.1000    0.0127
+##     60        0.4112            -nan     0.1000    0.0081
+##     80        0.3281            -nan     0.1000    0.0042
+##    100        0.2720            -nan     0.1000    0.0030
+##    120        0.2309            -nan     0.1000    0.0023
+##    140        0.1966            -nan     0.1000    0.0022
+##    150        0.1835            -nan     0.1000    0.0015
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1291
+##      2        1.5242            -nan     0.1000    0.0885
+##      3        1.4659            -nan     0.1000    0.0650
+##      4        1.4226            -nan     0.1000    0.0530
+##      5        1.3879            -nan     0.1000    0.0451
+##      6        1.3583            -nan     0.1000    0.0467
+##      7        1.3288            -nan     0.1000    0.0401
+##      8        1.3036            -nan     0.1000    0.0335
+##      9        1.2821            -nan     0.1000    0.0351
+##     10        1.2603            -nan     0.1000    0.0269
+##     20        1.1043            -nan     0.1000    0.0179
+##     40        0.9359            -nan     0.1000    0.0108
+##     60        0.8287            -nan     0.1000    0.0056
+##     80        0.7499            -nan     0.1000    0.0047
+##    100        0.6882            -nan     0.1000    0.0032
+##    120        0.6365            -nan     0.1000    0.0033
+##    140        0.5938            -nan     0.1000    0.0032
+##    150        0.5732            -nan     0.1000    0.0026
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1873
+##      2        1.4891            -nan     0.1000    0.1271
+##      3        1.4063            -nan     0.1000    0.1065
+##      4        1.3388            -nan     0.1000    0.0854
+##      5        1.2839            -nan     0.1000    0.0684
+##      6        1.2388            -nan     0.1000    0.0646
+##      7        1.1972            -nan     0.1000    0.0586
+##      8        1.1613            -nan     0.1000    0.0549
+##      9        1.1269            -nan     0.1000    0.0501
+##     10        1.0957            -nan     0.1000    0.0428
+##     20        0.8945            -nan     0.1000    0.0202
+##     40        0.6871            -nan     0.1000    0.0102
+##     60        0.5626            -nan     0.1000    0.0066
+##     80        0.4726            -nan     0.1000    0.0067
+##    100        0.4058            -nan     0.1000    0.0029
+##    120        0.3529            -nan     0.1000    0.0039
+##    140        0.3112            -nan     0.1000    0.0012
+##    150        0.2926            -nan     0.1000    0.0014
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2341
+##      2        1.4616            -nan     0.1000    0.1651
+##      3        1.3594            -nan     0.1000    0.1207
+##      4        1.2812            -nan     0.1000    0.1098
+##      5        1.2129            -nan     0.1000    0.0866
+##      6        1.1590            -nan     0.1000    0.0794
+##      7        1.1088            -nan     0.1000    0.0666
+##      8        1.0672            -nan     0.1000    0.0739
+##      9        1.0210            -nan     0.1000    0.0627
+##     10        0.9824            -nan     0.1000    0.0481
+##     20        0.7608            -nan     0.1000    0.0229
+##     40        0.5296            -nan     0.1000    0.0119
+##     60        0.4055            -nan     0.1000    0.0057
+##     80        0.3260            -nan     0.1000    0.0041
+##    100        0.2690            -nan     0.1000    0.0032
+##    120        0.2251            -nan     0.1000    0.0025
+##    140        0.1904            -nan     0.1000    0.0022
+##    150        0.1778            -nan     0.1000    0.0029
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1300
+##      2        1.5241            -nan     0.1000    0.0862
+##      3        1.4663            -nan     0.1000    0.0674
+##      4        1.4216            -nan     0.1000    0.0568
+##      5        1.3850            -nan     0.1000    0.0506
+##      6        1.3523            -nan     0.1000    0.0388
+##      7        1.3268            -nan     0.1000    0.0382
+##      8        1.3021            -nan     0.1000    0.0333
+##      9        1.2797            -nan     0.1000    0.0341
+##     10        1.2576            -nan     0.1000    0.0304
+##     20        1.1028            -nan     0.1000    0.0158
+##     40        0.9340            -nan     0.1000    0.0098
+##     60        0.8280            -nan     0.1000    0.0070
+##     80        0.7480            -nan     0.1000    0.0046
+##    100        0.6854            -nan     0.1000    0.0028
+##    120        0.6339            -nan     0.1000    0.0034
+##    140        0.5907            -nan     0.1000    0.0022
+##    150        0.5706            -nan     0.1000    0.0019
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1871
+##      2        1.4868            -nan     0.1000    0.1291
+##      3        1.4029            -nan     0.1000    0.1060
+##      4        1.3354            -nan     0.1000    0.0828
+##      5        1.2818            -nan     0.1000    0.0724
+##      6        1.2339            -nan     0.1000    0.0589
+##      7        1.1966            -nan     0.1000    0.0599
+##      8        1.1589            -nan     0.1000    0.0520
+##      9        1.1254            -nan     0.1000    0.0442
+##     10        1.0969            -nan     0.1000    0.0468
+##     20        0.8898            -nan     0.1000    0.0235
+##     40        0.6827            -nan     0.1000    0.0124
+##     60        0.5584            -nan     0.1000    0.0057
+##     80        0.4716            -nan     0.1000    0.0061
+##    100        0.4085            -nan     0.1000    0.0041
+##    120        0.3551            -nan     0.1000    0.0035
+##    140        0.3098            -nan     0.1000    0.0023
+##    150        0.2930            -nan     0.1000    0.0021
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2416
+##      2        1.4573            -nan     0.1000    0.1565
+##      3        1.3574            -nan     0.1000    0.1295
+##      4        1.2764            -nan     0.1000    0.1114
+##      5        1.2088            -nan     0.1000    0.0872
+##      6        1.1532            -nan     0.1000    0.0769
+##      7        1.1044            -nan     0.1000    0.0634
+##      8        1.0645            -nan     0.1000    0.0554
+##      9        1.0294            -nan     0.1000    0.0672
+##     10        0.9891            -nan     0.1000    0.0484
+##     20        0.7501            -nan     0.1000    0.0219
+##     40        0.5300            -nan     0.1000    0.0109
+##     60        0.4065            -nan     0.1000    0.0072
+##     80        0.3261            -nan     0.1000    0.0037
+##    100        0.2687            -nan     0.1000    0.0040
+##    120        0.2239            -nan     0.1000    0.0031
+##    140        0.1891            -nan     0.1000    0.0016
+##    150        0.1756            -nan     0.1000    0.0012
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1269
+##      2        1.5229            -nan     0.1000    0.0892
+##      3        1.4645            -nan     0.1000    0.0672
+##      4        1.4204            -nan     0.1000    0.0535
+##      5        1.3848            -nan     0.1000    0.0499
+##      6        1.3520            -nan     0.1000    0.0406
+##      7        1.3258            -nan     0.1000    0.0402
+##      8        1.3009            -nan     0.1000    0.0315
+##      9        1.2805            -nan     0.1000    0.0302
+##     10        1.2613            -nan     0.1000    0.0320
+##     20        1.1064            -nan     0.1000    0.0156
+##     40        0.9367            -nan     0.1000    0.0073
+##     60        0.8297            -nan     0.1000    0.0062
+##     80        0.7493            -nan     0.1000    0.0050
+##    100        0.6863            -nan     0.1000    0.0034
+##    120        0.6350            -nan     0.1000    0.0030
+##    140        0.5921            -nan     0.1000    0.0030
+##    150        0.5733            -nan     0.1000    0.0024
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1833
+##      2        1.4884            -nan     0.1000    0.1286
+##      3        1.4056            -nan     0.1000    0.1063
+##      4        1.3392            -nan     0.1000    0.0843
+##      5        1.2848            -nan     0.1000    0.0778
+##      6        1.2357            -nan     0.1000    0.0616
+##      7        1.1956            -nan     0.1000    0.0663
+##      8        1.1552            -nan     0.1000    0.0535
+##      9        1.1217            -nan     0.1000    0.0423
+##     10        1.0953            -nan     0.1000    0.0401
+##     20        0.8926            -nan     0.1000    0.0201
+##     40        0.6831            -nan     0.1000    0.0095
+##     60        0.5558            -nan     0.1000    0.0115
+##     80        0.4692            -nan     0.1000    0.0073
+##    100        0.4030            -nan     0.1000    0.0028
+##    120        0.3504            -nan     0.1000    0.0031
+##    140        0.3098            -nan     0.1000    0.0023
+##    150        0.2916            -nan     0.1000    0.0017
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2371
+##      2        1.4596            -nan     0.1000    0.1579
+##      3        1.3592            -nan     0.1000    0.1333
+##      4        1.2762            -nan     0.1000    0.0990
+##      5        1.2138            -nan     0.1000    0.0922
+##      6        1.1556            -nan     0.1000    0.0733
+##      7        1.1092            -nan     0.1000    0.0730
+##      8        1.0651            -nan     0.1000    0.0551
+##      9        1.0297            -nan     0.1000    0.0660
+##     10        0.9890            -nan     0.1000    0.0490
+##     20        0.7578            -nan     0.1000    0.0245
+##     40        0.5364            -nan     0.1000    0.0118
+##     60        0.4147            -nan     0.1000    0.0094
+##     80        0.3292            -nan     0.1000    0.0033
+##    100        0.2715            -nan     0.1000    0.0050
+##    120        0.2266            -nan     0.1000    0.0018
+##    140        0.1917            -nan     0.1000    0.0014
+##    150        0.1777            -nan     0.1000    0.0011
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1252
+##      2        1.5242            -nan     0.1000    0.0856
+##      3        1.4666            -nan     0.1000    0.0678
+##      4        1.4226            -nan     0.1000    0.0519
+##      5        1.3880            -nan     0.1000    0.0503
+##      6        1.3558            -nan     0.1000    0.0446
+##      7        1.3279            -nan     0.1000    0.0362
+##      8        1.3045            -nan     0.1000    0.0348
+##      9        1.2826            -nan     0.1000    0.0349
+##     10        1.2600            -nan     0.1000    0.0268
+##     20        1.1089            -nan     0.1000    0.0182
+##     40        0.9378            -nan     0.1000    0.0088
+##     60        0.8301            -nan     0.1000    0.0070
+##     80        0.7523            -nan     0.1000    0.0055
+##    100        0.6887            -nan     0.1000    0.0041
+##    120        0.6372            -nan     0.1000    0.0033
+##    140        0.5930            -nan     0.1000    0.0024
+##    150        0.5732            -nan     0.1000    0.0022
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.1853
+##      2        1.4891            -nan     0.1000    0.1247
+##      3        1.4082            -nan     0.1000    0.1074
+##      4        1.3398            -nan     0.1000    0.0769
+##      5        1.2899            -nan     0.1000    0.0696
+##      6        1.2455            -nan     0.1000    0.0753
+##      7        1.1999            -nan     0.1000    0.0681
+##      8        1.1584            -nan     0.1000    0.0491
+##      9        1.1271            -nan     0.1000    0.0459
+##     10        1.0982            -nan     0.1000    0.0396
+##     20        0.8990            -nan     0.1000    0.0211
+##     40        0.6838            -nan     0.1000    0.0106
+##     60        0.5598            -nan     0.1000    0.0066
+##     80        0.4716            -nan     0.1000    0.0048
+##    100        0.4083            -nan     0.1000    0.0048
+##    120        0.3561            -nan     0.1000    0.0029
+##    140        0.3124            -nan     0.1000    0.0031
+##    150        0.2943            -nan     0.1000    0.0033
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2305
+##      2        1.4615            -nan     0.1000    0.1638
+##      3        1.3591            -nan     0.1000    0.1215
+##      4        1.2824            -nan     0.1000    0.1045
+##      5        1.2166            -nan     0.1000    0.0848
+##      6        1.1622            -nan     0.1000    0.0653
+##      7        1.1196            -nan     0.1000    0.0835
+##      8        1.0690            -nan     0.1000    0.0570
+##      9        1.0321            -nan     0.1000    0.0674
+##     10        0.9905            -nan     0.1000    0.0480
+##     20        0.7619            -nan     0.1000    0.0255
+##     40        0.5363            -nan     0.1000    0.0140
+##     60        0.4111            -nan     0.1000    0.0072
+##     80        0.3302            -nan     0.1000    0.0038
+##    100        0.2720            -nan     0.1000    0.0035
+##    120        0.2285            -nan     0.1000    0.0016
+##    140        0.1938            -nan     0.1000    0.0011
+##    150        0.1796            -nan     0.1000    0.0012
+## 
+## Iter   TrainDeviance   ValidDeviance   StepSize   Improve
+##      1        1.6094            -nan     0.1000    0.2396
+##      2        1.4603            -nan     0.1000    0.1642
+##      3        1.3578            -nan     0.1000    0.1225
+##      4        1.2798            -nan     0.1000    0.1096
+##      5        1.2117            -nan     0.1000    0.0922
+##      6        1.1552            -nan     0.1000    0.0817
+##      7        1.1043            -nan     0.1000    0.0626
+##      8        1.0652            -nan     0.1000    0.0599
+##      9        1.0275            -nan     0.1000    0.0643
+##     10        0.9883            -nan     0.1000    0.0533
+##     20        0.7612            -nan     0.1000    0.0239
+##     40        0.5366            -nan     0.1000    0.0151
+##     60        0.4101            -nan     0.1000    0.0080
+##     80        0.3316            -nan     0.1000    0.0055
+##    100        0.2713            -nan     0.1000    0.0020
+##    120        0.2294            -nan     0.1000    0.0040
+##    140        0.1962            -nan     0.1000    0.0015
+##    150        0.1820            -nan     0.1000    0.0014
+</code></pre>
+
+<pre><code class="r">predict(gbm,test_x)
+</code></pre>
+
+<pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
+## Levels: A B C D E
+</code></pre>
+
+<pre><code class="r">plot(gbm)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/></p>
+
+<h3>Plot of Accuracy variation in crossfold</h3>
+
+<pre><code class="r">t &lt;- gbm$resample
+t&lt;- t[order(t$Resample),]
+plot(y=t$Accuracy, x=as.factor(t$Resample), ylab=&quot;Accuracy&quot;, xlab= &quot;Fold and Repetation&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-12"/>
+As per the model result, All variables has a positive contribution. From the tree and accuracy plot it is evident that the accuracy as increased as the number of trees has increased. On parametric variation can also be applied is shrinkage parameter. Data which I have dropped due to NA, can be imputed.</p>
+
+</body>
+
+</html>
