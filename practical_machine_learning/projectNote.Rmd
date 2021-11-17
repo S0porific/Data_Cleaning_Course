@@ -20,7 +20,7 @@ Whole logic corresponding to the work is based on a few facts that we need to co
 
 For prediction, I have a lot of algo to choose as most of them are present in caret package. I went ahead with gbm because of decent performance than random forest regression. 
 
-Testing was performed with three iteration and 5-cross validation. It was meant to ensure that the model should not be biased. 
+Testing was performed with 5 iteration and 5-cross validation. It was meant to ensure that the model should not be biased. 
 
 Finally, the predict method of caret was used to evaluate on the test set. 
 
@@ -56,5 +56,20 @@ paste("Total Number of columns for training", length(names(filter_train)))
 ```
 ### Accuracy and Number of tree plot. 
 
-!["The Accuracy plot"](Rplot.png)
+```{r}
+# Train Random forest for the prediction 
+ctrl <- trainControl(method = "repeatedcv", repeats = 5, number = 5)
+set.seed(825)
+gbm <- train(x= train_x, y =train_y, method = 'gbm', trControl=ctrl)
+predict(gbm,test_x)
+plot(gbm)
+```
+
+### Plot of Accuracy variation in crossfold
+```{r}
+t <- gbm$resample
+t<- t[order(t$Resample),]
+plot(y=t$Accuracy, x=as.factor(t$Resample), ylab="Accuracy", xlab= "Fold and Repetation")
+```
+As per the model result, All variables has a positive contribution. From the tree and accuracy plot it is evident that the accuracy as increased as the number of trees has increased. On parametric variation can also be applied is shrinkage parameter. Data which I have dropped due to NA, can be imputed.
 

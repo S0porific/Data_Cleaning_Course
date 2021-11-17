@@ -20,7 +20,7 @@ train_x <- train_x[, selected_col]
 test_x <- test[, selected_col]
 
 # Train Random forest for the prediction 
-ctrl <- trainControl(method = "repeatedcv", repeats = 3, number = 5)
+ctrl <- trainControl(method = "repeatedcv", repeats = 5, number = 5)
 set.seed(825)
 gbm <- train(x= train_x, y =train_y, method = 'gbm', trControl=ctrl)
 predict(gbm,test_x)
